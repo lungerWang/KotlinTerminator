@@ -1,9 +1,14 @@
 package com.allen
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Printer
 
+/*
+ 包导入名字冲突 使用重命名
+ import foo.Bar
+ import bar.Bar as bBar*/
 class MainActivity : AppCompatActivity() {
 
     val a: Int = 1
@@ -27,6 +32,7 @@ class MainActivity : AppCompatActivity() {
         println(describe2(2))
         iter()
         lambdaTest()
+        startActivity(Intent(this, SecondActivity::class.java))
     }
 
     fun sum(a: Int, b: Int): Int {
@@ -126,13 +132,21 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun lambdaTest(){
+    fun lambdaTest() {
         val fruits = listOf("banana", "avocado", "apple", "aaa", "aab", "kiwifruit")
         fruits
             .filter { it.startsWith("a") }
             .sortedBy { it }
             .map { it.toUpperCase() }
             .forEach { println(it) }
+    }
+
+    fun test() {
+        var otherName: String?
+        otherName = null
+        //非空取长度
+        val length = otherName?.length
+
     }
 
 }
