@@ -11,8 +11,7 @@ public class SecondActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
-        ACache aCache = new ACache();
-        Log.d("wbl", ACache.Companion.getName());
+        InitOrderDemo kangkang = new InitOrderDemo("Kangkang");
     }
 
     private int sum(int a, int b){
