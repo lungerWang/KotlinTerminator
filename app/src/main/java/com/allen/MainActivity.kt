@@ -33,6 +33,8 @@ class MainActivity : AppCompatActivity() {
         iter()
         lambdaTest()
         startActivity(Intent(this, SecondActivity::class.java))
+        publicFunction(1)
+        vars(1, 2, 3)
     }
 
     fun sum(a: Int, b: Int): Int {
@@ -147,6 +149,26 @@ class MainActivity : AppCompatActivity() {
         //非空取长度
         val length = otherName?.length
 
+    }
+
+    fun publicFunction(a: Int) = print("1")
+
+    fun vars(vararg av: Int) {
+        for (a in av) {
+            print(a.toString())
+        }
+    }
+
+    fun lambdaTest2() {
+        val lam: (Int, Int) -> Int = { x, y -> x + y }
+        print(lam(1, 5))
+
+    }
+
+    fun question(age: Int?) {
+        val age1: String? = "123"
+        val age2 = age?.toString() ?: -1
+        val age3 = age1?.toInt() ?: -2
     }
 
 }
