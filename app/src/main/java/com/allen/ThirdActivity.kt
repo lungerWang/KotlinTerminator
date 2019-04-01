@@ -9,5 +9,14 @@ class ThirdActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_third)
         Animal().test()
+        val x = null
+        println(x.toString())
+    }
+
+    fun Any?.toString():String{
+        if(this == null){
+            return "null"
+        }
+        return toString()
     }
 }
