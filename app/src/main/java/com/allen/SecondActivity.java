@@ -12,6 +12,7 @@ public class SecondActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
         InitOrderDemo kangkang = new InitOrderDemo("Kangkang");
+        new Animal().main(null);
     }
 
     private int sum(int a, int b){
