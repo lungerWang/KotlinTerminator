@@ -11,6 +11,7 @@ class ThirdActivity : AppCompatActivity() {
         Animal().test()
         val x = null
         println(x.toString())
+        objectTest()
     }
 
     fun Any?.toString():String{
@@ -18,5 +19,15 @@ class ThirdActivity : AppCompatActivity() {
             return "null"
         }
         return toString()
+    }
+
+    private fun objectTest() {
+        val obj = object{
+            var name = "kangkang"
+            var age = 18
+        }
+
+        println(obj.name)
+        println(obj.age)
     }
 }
