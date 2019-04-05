@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity() {
     val items = listOf("apple", "banana")
 
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -35,6 +36,8 @@ class MainActivity : AppCompatActivity() {
         startActivity(Intent(this, SecondActivity::class.java))
         publicFunction(1)
         vars(1, 2, 3)
+        val max = if(a > b) a else b
+        Person("kangkang", 15)
     }
 
     fun sum(a: Int, b: Int): Int {
@@ -169,6 +172,15 @@ class MainActivity : AppCompatActivity() {
         val age1: String? = "123"
         val age2 = age?.toString() ?: -1
         val age3 = age1?.toInt() ?: -2
+    }
+
+    fun convert(){
+        val v1 : Short = 3
+        var v2 = v1.toInt()
+        v2.shl(10)
+        v2.shr(5)
+        v2.or(5)
+        v2.and(99)
     }
 
 }
