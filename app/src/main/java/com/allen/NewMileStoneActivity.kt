@@ -12,6 +12,8 @@ class NewMileStoneActivity : AppCompatActivity() {
         arrayApplication()
         testFormatter()
         testSet()
+        testMap()
+        testSwitch()
     }
 
 
@@ -29,8 +31,8 @@ class NewMileStoneActivity : AppCompatActivity() {
     private fun operateArr(strArr: Array<String>?) {
         btn.setOnClickListener {
             var str: String = ""
-            var i:Int = 0
-            while (i< strArr!!.size){
+            var i: Int = 0
+            while (i < strArr!!.size) {
                 str += strArr[i]
                 i++
             }
@@ -48,15 +50,48 @@ class NewMileStoneActivity : AppCompatActivity() {
     }
 
     private fun testSet() {
-        val set:MutableSet<String> = mutableSetOf("We", "are", "the", "champion!")
+        val set: MutableSet<String> = mutableSetOf("We", "are", "the", "champion!")
         btn.setOnLongClickListener {
             var str = ""
-            set.forEach{
+            set.forEach {
                 str = "$str $it"
             }
             tv_test.text = str
             true
         }
+    }
+
+    private fun testMap() {
+        var goodsMap: Map<String, String> =
+            mapOf(
+                "iphone" to "苹果",
+                "benz" to "奔驰",
+                "android" to "安卓"
+            )
+        var goodsMutMap: MutableMap<String, String> =
+                mutableMapOf(
+                    Pair("1", "2"),
+                    Pair("2", "3"),
+                    Pair("3", "4"),
+                    Pair("4", "5")
+                )
+        var strAppend = ""
+        for (item in goodsMutMap){
+            strAppend = "$strAppend $item"
+
+        }
+        tv_test.text = strAppend
+
+    }
+
+    private fun testSwitch() {
+        var tmp: Number? = 100000000000
+        var str = when(tmp){
+            is Int -> "我tm是Int？"
+            is Double-> "我靠是Double！"
+            else -> "Who am I？"
+        }
+        tv_test.text = str
     }
 
 }
