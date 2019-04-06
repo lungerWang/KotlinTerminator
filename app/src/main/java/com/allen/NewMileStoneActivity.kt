@@ -1,8 +1,11 @@
 package com.allen
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_new_mile_stone.*
+import java.text.SimpleDateFormat
+import java.util.*
 
 class NewMileStoneActivity : AppCompatActivity() {
 
@@ -14,6 +17,53 @@ class NewMileStoneActivity : AppCompatActivity() {
         testSet()
         testMap()
         testSwitch()
+        println(getFourBigGeneral())
+        printVararg("中国四大美女", "xishi", "diaochan", "xiaoqiao", "yangyuhuan")
+        val customMaxValue = customMaxValue(arrayOf(2, 93, 12, 39, 33, 6), { a, b -> if (b == null) true else a >= b })
+        println(customMaxValue)
+        val customMaxValue2 = customMaxValue(arrayOf("fa", "son", "w", "linkeyou", "and"), this::max)
+        println(customMaxValue2)
+        println(Date().getNowDate())
+        println(DataUtil.nowDateTime)
+        println(DataUtil.getFormatTime("yyy,MM,dd"))
+        //startActivity(Intent(this, Main2Activity::class.java))
+    }
+
+    fun Date.getNowDate(): String {
+        val sdf = SimpleDateFormat("yyyy-MM-dd")
+        return sdf.format(Date())
+    }
+
+    fun max(t1: String, t2: String?): Boolean {
+        return if (t2 == null) true else t1.length >= t2.length
+    }
+
+    fun getFourBigGeneral(
+        first: String = "造纸术",
+        second: String = "活字印刷术",
+        third: String = "火药",
+        five: String = "指南针"
+    ): String {
+        return "$first, $second, $third, $five"
+    }
+
+    fun <T> printVararg(tag: String, vararg otherInfo: T) {
+        var strTmp = "$tag:"
+        for (item in otherInfo) {
+            strTmp = "$strTmp ${item.toString()},"
+        }
+        println(strTmp)
+    }
+
+    fun <V> customMaxValue(array: Array<V>, greater: (V, V?) -> Boolean): V? {
+        var tmp: V? = null
+        array.forEach {
+            if (greater(it, tmp)) {
+                tmp = it
+            }
+        }
+        return tmp
+
     }
 
 
@@ -69,14 +119,14 @@ class NewMileStoneActivity : AppCompatActivity() {
                 "android" to "安卓"
             )
         var goodsMutMap: MutableMap<String, String> =
-                mutableMapOf(
-                    Pair("1", "2"),
-                    Pair("2", "3"),
-                    Pair("3", "4"),
-                    Pair("4", "5")
-                )
+            mutableMapOf(
+                Pair("1", "2"),
+                Pair("2", "3"),
+                Pair("3", "4"),
+                Pair("4", "5")
+            )
         var strAppend = ""
-        for (item in goodsMutMap){
+        for (item in goodsMutMap) {
             strAppend = "$strAppend $item"
 
         }
@@ -86,9 +136,9 @@ class NewMileStoneActivity : AppCompatActivity() {
 
     private fun testSwitch() {
         var tmp: Number? = 100000000000
-        var str = when(tmp){
+        var str = when (tmp) {
             is Int -> "我tm是Int？"
-            is Double-> "我靠是Double！"
+            is Double -> "我靠是Double！"
             else -> "Who am I？"
         }
         tv_test.text = str
