@@ -27,6 +27,11 @@ class NewMileStoneActivity : AppCompatActivity() {
         println(DataUtil.nowDateTime)
         println(DataUtil.getFormatTime("yyy,MM,dd"))
         //startActivity(Intent(this, Main2Activity::class.java))
+        checkbox.setOnCheckedChangeListener{buttonView, isChecked ->
+            if (isChecked) {
+                //Do Whatever you want in isChecked
+            }
+        }
     }
 
     fun Date.getNowDate(): String {

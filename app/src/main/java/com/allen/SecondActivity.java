@@ -6,6 +6,8 @@ import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -17,6 +19,13 @@ public class SecondActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
+        CheckBox cb = findViewById(R.id.cb);
+        cb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+
+            }
+        });
         InitOrderDemo kangkang = new InitOrderDemo("Kangkang");
         Random random = new Random();
         random.ints().limit(10).forEach(System.out::println);
